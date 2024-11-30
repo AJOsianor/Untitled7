@@ -19,7 +19,6 @@ pip freeze > requirements.txt
 
 docker build -f path/to/Dockerfile .
 
-services:
   - type: web
     name: Flask-KMeans-App
     env: python
