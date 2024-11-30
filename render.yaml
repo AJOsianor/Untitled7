@@ -1,3 +1,21 @@
+services:
+  - type: web
+    name: Flask-KMeans-App
+    env: python
+    region: us-central  # Adjust region as needed (e.g., eu-central)
+    plan: free  # Change to "starter" or higher for production
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    runtime: python3
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: PORT
+        value: 5000
+    healthCheckPath: /
+    autoDeploy: true
+
+
 git add render.yaml
 git commit -m "Add render.yaml"
 git push
