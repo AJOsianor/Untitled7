@@ -1,3 +1,42 @@
+# Use an official Python runtime as a parent image
+FROM python:3.9-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY . /app
+
+# Install the dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Expose port 5000 for Flask app
+EXPOSE 5000
+
+# Command to run the Flask app
+CMD ["python", "app.py"]
+
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+.env
+build/
+dist/
+*.egg-info/
+*.log
+.DS_Store
+
+flask
+flask-cors
+numpy
+scikit-learn
+
+pip freeze > requirements.txt
+
+docker build -f path/to/Dockerfile .
+
 services:
   - type: web
     name: Flask-KMeans-App
@@ -14,6 +53,4 @@ services:
         value: 5000
     healthCheckPath: /
     autoDeploy: true
-git add render.yaml
-git commit -m "Add render.yaml"
-git push
+
